@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
 <script>
-
-    function temHabilidade(skills, find){
-        return (skills.indexOf(find) >= 0);
+    
+    function experiencia(anos) {
+    // código aqui
+        var anosEstudo;
+        if (anos == 0 || anos == 1){
+            anosEstudo = "Iniciante";
+        }else if (anos > 1 && anos <= 3){
+            anosEstudo = "Intermediario";
+        } else if (anos >= 4 && anos <= 6){
+            anosEstudo = "Avançado";
+        } else if (anos >= 7){
+            anosEstudo = "Jedi Master";
+        } else {
+            anosEstudo = "Ano invalido";
+        }
+        return anosEstudo;
     }
 
-    var skills = ["Javascript", "ReactJS", "React Native"];
-    var resultado = temHabilidade(skills, "Javascript");
+    var anosEstudo = 1;
+    var resultado = experiencia(anosEstudo);
     console.log(resultado);
+    // De 0-1 ano: Iniciante
+    // De 1-3 anos: Intermediário
+    // De 3-6 anos: Avançado
+    // De 7 acima: Jedi Master
+
 
 </script>
 
