@@ -6,10 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <p>teste git</p>
-    <p>teste 2</p>
-    <script>
-        console.log("Hello World!");
-    </script>
+<script>
+
+    function temHabilidade(skills, find){
+        return (skills.indexOf(find) >= 0);
+    }
+
+    var skills = ["Javascript", "ReactJS", "React Native"];
+    var resultado = temHabilidade(skills, "Javascript");
+    console.log(resultado);
+
+</script>
+
 </body>
 </html>
