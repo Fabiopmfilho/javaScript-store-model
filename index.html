@@ -3,37 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Loja Virtual</title>
 </head>
 <body>
+    <h2>Vitrine</h2>
+    <div id="produtos">
+       
+    </div> <!-- produtos -->
+    <h2>Carrinho</h2>
+    <div id="carrinho">
+        
+    </div> <!-- carrinho -->
+
 <script>
-    
-    function experiencia(anos) {
-    // código aqui
-        var anosEstudo;
-        if (anos == 0 || anos == 1){
-            anosEstudo = "Iniciante";
-        }else if (anos > 1 && anos <= 3){
-            anosEstudo = "Intermediario";
-        } else if (anos >= 4 && anos <= 6){
-            anosEstudo = "Avançado";
-        } else if (anos >= 7){
-            anosEstudo = "Jedi Master";
-        } else {
-            anosEstudo = "Ano invalido";
-        }
-        return anosEstudo;
+    const itens = [
+        {
+            id: 0,
+            nome: 'Camiseta modelo 1',
+            img: '/images/Camiseta-Psycho-Skull.jpg',
+            qtd: 0,
+            preco: 49.99
+        },
+        {
+            id: 1,
+            nome: 'Camiseta modelo 2',
+            img: 'images/Camiseta-Spartan-Skull.jpg',
+            qtd: 0,
+            preco: 49.99
+        },
+        {
+            id: 2,
+            nome: 'Camiseta modelo 3',
+            img: 'images/Camiseta-Viking-World-Tour.jpg',
+            qtd: 0,
+            preco: 49.99
+        },
+    ];
+
+    inicializarLoja = () => { // function inicializarLoja();
+        var containerProdutos = document.getElementById('produtos');
+        itens.map((val) => {
+            containerProdutos.innerHTML += `
+            
+            <div class="produto-single">
+                <img src="`+ val.img +`">
+                <p id="text">` + val.nome +`</p>
+                <p id="preco">R$` + val.preco +`</p>
+                <a key="`+val.id+`" href="#">Adicionar ao carrinho!</a>
+            </div>
+
+            `;
+        })
     }
 
-    var anosEstudo = 1;
-    var resultado = experiencia(anosEstudo);
-    console.log(resultado);
-    // De 0-1 ano: Iniciante
-    // De 1-3 anos: Intermediário
-    // De 3-6 anos: Avançado
-    // De 7 acima: Jedi Master
+    inicializarLoja();
 
+    atualizarCarrinho = () => {
+        var containerCarrinho = document.getElementById('carrinho');
+        containerCarrinho.innerHTML = "";   
+        itens.map((val) => {
+            if(val.qtd > 0){
+                containerCarrinho.innerHTML += `
+                <div class="info-single">
+                    <p style="float:left;">Produto: ` + val.nome +`</p>
+                    <p style="float:right;">Preço: R$` + val.preco +`</p>
+                    <p style="float:right;">Quantidade: ` + val.qtd + `</p>
+                    
+                <div style="clear:both"></div>
+                <p style="float:right;">Total: R$` + val.preco*val.qtd  + `</p> 
+                <div style="clear:both"></div>
+                </div>
+                   
+                `;
+            }
+        })
+    }
+
+    var links = document.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function(){
+            let key = this.getAttribute('key');
+            itens[key].qtd++;
+            atualizarCarrinho();
+            return false;
+        })
+        
+    }
 
 </script>
 
