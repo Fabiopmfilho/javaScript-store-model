@@ -49,9 +49,14 @@ body{
     color: #1e0027;
     background-color: #00ff85;
     text-align: center;
-    display: block;
+    display: grid;
     padding: 4px 0;
     font-size: 22px;
+}
+
+.produto-single a:hover{
+    color: #1e0027;
+    background-color: #04d36f;
     
 }
 
